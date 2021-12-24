@@ -1,32 +1,20 @@
 import * as React from 'react';
+import { Box } from 'rebass';
+import { Label, Slider } from '@rebass/forms'
 
 import './styles.scss';
 
 const Options: React.FC = () => {
   return (
     <div>
-      <form>
-        <p>
-          <label htmlFor="username">Your Name</label>
-          <br />
-          <input
-            type="text"
-            id="username"
-            name="username"
-            spellCheck="false"
-            autoComplete="off"
-            required
-          />
-        </p>
-        <p>
-          <label htmlFor="logging">
-            <input type="checkbox" name="logging" /> Show the features enabled
-            on each page in the console
-          </label>
-
-          <p>cool cool cool</p>
-        </p>
-      </form>
+      <Box>
+        <Label htmlFor='percent'>Percent</Label>
+        <Slider
+          id='percent'
+          name='percent'
+          defaultValue={25}
+        />
+      </Box>
     </div>
   );
 };

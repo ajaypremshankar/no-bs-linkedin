@@ -1,6 +1,15 @@
-import 'emoji-log';
-import {browser} from 'webextension-polyfill-ts';
+import "emoji-log";
+import { browser } from "webextension-polyfill-ts";
+import { AppConfig } from "../types/AppConfig";
 
 browser.runtime.onInstalled.addListener((): void => {
-  console.emoji('🦄', 'extension installed');
+  chrome.storage.local.set(
+    {
+      "no-bs-li-config": {
+        hideReactions: false,
+        hideSidebar: false,
+      } as AppConfig,
+    },
+    function () {}
+  );
 });
