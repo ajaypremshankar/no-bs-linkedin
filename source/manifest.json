@@ -13,13 +13,18 @@
   "homepage_url": "https://github.com/abhijithvijayan/no-bs-linkedin",
   "short_name": "Sample Name",
 
-  "permissions": ["activeTab", "storage", "http://*/*", "https://*/*"],
+  "permissions": [
+    "activeTab",
+    "storage",
+    "http://www.linkedin.com/*",
+    "https://www.linkedin.com/*"
+  ],
 
   "content_security_policy": "script-src 'self'; object-src 'self'",
 
-  "__chrome|firefox__author": "abhijithvijayan",
+  "__chrome|firefox__author": "ajaypremshankar",
   "__opera__developer": {
-    "name": "abhijithvijayan"
+    "name": "ajaypremshankar"
   },
 
   "__firefox__applications": {
@@ -39,7 +44,7 @@
       "48": "assets/icons/favicon-48.png",
       "128": "assets/icons/favicon-128.png"
     },
-    "default_title": "tiny title",
+    "default_title": "No BS LinkedIn",
     "__chrome|opera__chrome_style": false,
     "__firefox__browser_style": false
   },
@@ -58,7 +63,7 @@
 
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
+      "matches": ["http://www.linkedin.com/*", "https://www.linkedin.com/*"],
       "js": ["js/contentScript.bundle.js"]
     }
   ]
