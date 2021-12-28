@@ -207,33 +207,33 @@ const Popup: React.FC = () => {
         <Divider />
 
         <SwitchRow
-          label="Hide polls"
+          label="Polls"
           onClick={toggleHidePolls}
           checked={appState.hidePolls}
           id={'hide-polls'}
         />
         <SwitchRow
-          label="Hide feed source"
+          label="Feed source"
           onClick={toggleHideFeedSource}
           checked={appState.hideFeedSource}
           id={'hide-feed-source'}
         />
         <SwitchRow
-          label="Hide sidebar"
+          label="Sidebar"
           onClick={toggleHideSidebar}
           checked={appState.hideSidebar}
           id={'hide-sidebar'}
         />
 
         <SwitchRow
-          label="Hide Message bubble"
+          label="Message bubble"
           onClick={toggleHideMessageBubble}
           checked={appState.hideMessageBubble}
           id={'hide-message-bubble'}
         />
 
         <SwitchRow
-          label="Hide reactions"
+          label="Reactions"
           onClick={toggleHideReactions}
           checked={appState.hideReactions}
           id={'hide-reactions'}
@@ -241,7 +241,7 @@ const Popup: React.FC = () => {
 
         {/*
         <SwitchRow
-          label="Hide comments"
+          label="Comments"
           onClick={toggleHideComments}
           checked={appState.hideComments}
           id={'hide-comments'}
