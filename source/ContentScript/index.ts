@@ -1,6 +1,17 @@
 import { StorageService } from "../service/storage-service";
 import { AppConfig } from "../types/AppConfig";
 
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.action === "configChanged") {
+    toggleSocialReactions();
+    toggleSidebars();
+    toggleMessageBubble();
+    handlePosts();
+    handleScaling();
+    toggleFeedSource();
+  }
+});
+
 window.onload = function () {
   toggleSocialReactions();
   toggleSidebars();
@@ -47,7 +58,7 @@ const toggleSidebars = () => {
     classes.forEach((className) => {
       let elements = document.getElementsByClassName(className);
       for (let element of elements as any) {
-        element.style.transition = "all 2s linear";
+        element.style.transition = "all 2s ease-out";
         element.style.display = config.hideSidebar ? "none" : "block";
       }
     });

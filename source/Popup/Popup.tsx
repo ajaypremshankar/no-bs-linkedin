@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Row, Col, Card, Slider, Switch } from 'antd';
+import { Row, Col, Card, Slider, PageHeader, Divider } from 'antd';
 import { AppConfig } from '../types/AppConfig';
 import { StorageService } from '../service/storage-service';
-import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
 
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import './styles.scss';
+import SwitchRow from '../components/switch-row-component';
 
 const Popup: React.FC = () => {
 
@@ -27,6 +27,20 @@ const Popup: React.FC = () => {
     });
   }, []);
 
+  const onStateChange = (newState: AppConfig) => {
+    setAppState(newState);
+
+    StorageService.setConfig('no-bs-li-config', newState, function () {
+      chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+        if (tabs.length > 0 && tabs[0].id) {
+          chrome.tabs.sendMessage(tabs[0].id, { action: "configChanged" });
+        }
+      });
+    });
+
+
+  }
+
   const toggleHideReactions = () => {
 
     const newState: AppConfig = {
@@ -34,11 +48,7 @@ const Popup: React.FC = () => {
       hideReactions: !appState.hideReactions
     }
 
-    setAppState(newState);
-
-    StorageService.setConfig('no-bs-li-config', newState, function () {
-      console.log(newState);
-    });
+    onStateChange(newState);
 
   }
 
@@ -48,11 +58,7 @@ const Popup: React.FC = () => {
       hideSidebar: !appState.hideSidebar
     }
 
-    setAppState(newState);
-
-    StorageService.setConfig('no-bs-li-config', newState, function () {
-      console.log(newState);
-    });
+    onStateChange(newState);
 
   }
 
@@ -62,11 +68,7 @@ const Popup: React.FC = () => {
       hideMessageBubble: !appState.hideMessageBubble
     }
 
-    setAppState(newState);
-
-    StorageService.setConfig('no-bs-li-config', newState, function () {
-      console.log(newState);
-    });
+    onStateChange(newState);
 
   }
 
@@ -77,14 +79,11 @@ const Popup: React.FC = () => {
       hidePolls: !appState.hidePolls
     }
 
-    setAppState(newState);
-
-    StorageService.setConfig('no-bs-li-config', newState, function () {
-      console.log(newState);
-    });
+    onStateChange(newState);
 
   }
 
+  /*
   const toggleHideComments = () => {
 
     const newState: AppConfig = {
@@ -92,13 +91,10 @@ const Popup: React.FC = () => {
       hideComments: !appState.hideComments
     }
 
-    setAppState(newState);
-
-    StorageService.setConfig('no-bs-li-config', newState, function () {
-      console.log(newState);
-    });
+    onStateChange(newState);
 
   }
+  */
 
   const toggleHideFeedSource = () => {
 
@@ -107,11 +103,7 @@ const Popup: React.FC = () => {
       hideFeedSource: !appState.hideFeedSource
     }
 
-    setAppState(newState);
-
-    StorageService.setConfig('no-bs-li-config', newState, function () {
-      console.log(newState);
-    });
+    onStateChange(newState);
 
   }
 
@@ -122,11 +114,7 @@ const Popup: React.FC = () => {
       marginOnPosts: num
     }
 
-    setAppState(newState);
-
-    StorageService.setConfig('no-bs-li-config', newState, function () {
-      console.log(newState);
-    });
+    onStateChange(newState);
 
   }
 
@@ -137,12 +125,7 @@ const Popup: React.FC = () => {
       paddingOnPosts: num
     }
 
-    setAppState(newState);
-
-    StorageService.setConfig('no-bs-li-config', newState, function () {
-      console.log(newState);
-    });
-
+    onStateChange(newState);
   }
 
   const setScale = (num: number) => {
@@ -152,17 +135,25 @@ const Popup: React.FC = () => {
       scale: num
     }
 
-    setAppState(newState);
-
-    StorageService.setConfig('no-bs-li-config', newState, function () {
-      console.log(newState);
-    });
+    onStateChange(newState);
 
   }
 
   return (
     <>
       <Card style={{ width: 400 }}>
+        <Row>
+          <Col span={24}>
+            <PageHeader
+              backIcon={false}
+              className="site-page-header"
+              onBack={() => null}
+              title="No-BS-LI"
+              subTitle="Browse cleaner LinkedIn"
+            />
+          </Col>
+        </Row>
+        <Divider />
         <Row>
           <Col span={12}>
             <label>Scale {appState.scale}</label>
@@ -213,76 +204,49 @@ const Popup: React.FC = () => {
           </Col>
         </Row>
 
-        <Row>
-          <Col span={12}>
-            <label>Hide Polls</label>
-          </Col>
-          <Col span={12}>
-            <Switch
-              id='hide-polls'
-              checkedChildren={<CheckOutlined />}
-              unCheckedChildren={<CloseOutlined />}
-              onClick={() => toggleHidePolls()}
-              checked={appState.hidePolls}
-              defaultChecked={appState.hidePolls}
-            />
-          </Col>
-        </Row>
+        <Divider />
 
-        <Row>
-          <Col span={12}>
-            <label>Hide Feed source</label>
-          </Col>
-          <Col span={12}>
-            <Switch id='hide-feed-source'
-              checked={appState.hideFeedSource}
-              onClick={() => toggleHideFeedSource()} />
-          </Col>
-        </Row>
+        <SwitchRow
+          label="Hide polls"
+          onClick={toggleHidePolls}
+          checked={appState.hidePolls}
+          id={'hide-polls'}
+        />
+        <SwitchRow
+          label="Hide feed source"
+          onClick={toggleHideFeedSource}
+          checked={appState.hideFeedSource}
+          id={'hide-feed-source'}
+        />
+        <SwitchRow
+          label="Hide sidebar"
+          onClick={toggleHideSidebar}
+          checked={appState.hideSidebar}
+          id={'hide-sidebar'}
+        />
 
-        <Row>
-          <Col span={12}>
-            <label>Hide sidebar</label>
-          </Col>
-          <Col span={12}>
-            <Switch id='hide-sidebar'
-              checked={appState.hideSidebar}
-              onClick={() => toggleHideSidebar()} />
-          </Col>
-        </Row>
+        <SwitchRow
+          label="Hide Message bubble"
+          onClick={toggleHideMessageBubble}
+          checked={appState.hideMessageBubble}
+          id={'hide-message-bubble'}
+        />
 
-        <Row>
-          <Col span={12}>
-            <label>Hide Message bubble</label>
-          </Col>
-          <Col span={12}>
-            <Switch id='hide-message-bubble'
-              checked={appState.hideMessageBubble}
-              onClick={() => toggleHideMessageBubble()} />
-          </Col>
-        </Row>
+        <SwitchRow
+          label="Hide reactions"
+          onClick={toggleHideReactions}
+          checked={appState.hideReactions}
+          id={'hide-reactions'}
+        />
 
-        <Row>
-          <Col span={12}>
-            <label>Hide Reactions</label>
-          </Col>
-          <Col span={12}>
-            <Switch id='hide-reactions'
-              checked={appState.hideReactions}
-              onClick={() => toggleHideReactions()} />
-          </Col>
-        </Row>
-
-        <Row>
-          <Col span={12}>
-            <label>Hide Comments</label>
-          </Col>
-          <Col span={12}>
-            <Switch id='hide-comments'
-              checked={appState.hideComments}
-              onClick={() => toggleHideComments()} />
-          </Col>
-        </Row>
+        {/*
+        <SwitchRow
+          label="Hide comments"
+          onClick={toggleHideComments}
+          checked={appState.hideComments}
+          id={'hide-comments'}
+        />
+        */}
       </Card>
     </>
   );
