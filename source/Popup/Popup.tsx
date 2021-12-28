@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Card } from 'rebass';
-import { Label, Input, Switch, Slider } from '@rebass/forms'
-
-import './styles.scss';
+import { Row, Col, Card, Slider, Switch } from 'antd';
 import { AppConfig } from '../types/AppConfig';
 import { StorageService } from '../service/storage-service';
+import { CloseOutlined, CheckOutlined } from '@ant-design/icons';
+
+import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
+import './styles.scss';
 
 const Popup: React.FC = () => {
 
@@ -114,11 +115,11 @@ const Popup: React.FC = () => {
 
   }
 
-  const setMarginOnPosts = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const setMarginOnPosts = (num: number) => {
 
     const newState: AppConfig = {
       ...appState,
-      marginOnPosts: parseInt(e.target.value)
+      marginOnPosts: num
     }
 
     setAppState(newState);
@@ -129,11 +130,11 @@ const Popup: React.FC = () => {
 
   }
 
-  const setPaddingOnPosts = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const setPaddingOnPosts = (num: number) => {
 
     const newState: AppConfig = {
       ...appState,
-      paddingOnPosts: parseInt(e.target.value)
+      paddingOnPosts: num
     }
 
     setAppState(newState);
@@ -144,11 +145,11 @@ const Popup: React.FC = () => {
 
   }
 
-  const setScale = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const setScale = (num: number) => {
 
     const newState: AppConfig = {
       ...appState,
-      scale: parseInt(e.target.value)
+      scale: num
     }
 
     setAppState(newState);
@@ -160,60 +161,130 @@ const Popup: React.FC = () => {
   }
 
   return (
-    <div>
-      <Card width={300} height={300}>
+    <>
+      <Card style={{ width: 400 }}>
+        <Row>
+          <Col span={12}>
+            <label>Scale {appState.scale}</label>
+          </Col>
+          <Col span={12}>
+            <Slider
+              min={0}
+              defaultValue={1}
+              max={2}
+              step={0.1}
+              onChange={setScale}
+              value={typeof appState.scale === 'number' ? appState.scale : 1}
+            />
+          </Col>
+        </Row>
 
-        <Label htmlFor='percent'>Scale {appState.scale}</Label>
-        <Slider
-          id='percent'
-          name='percent'
-          max={200}
-          defaultValue={100}
-          value={appState.scale}
-          step={5}
-          onChange={setScale}
-        />
+        <Row>
+          <Col span={12}>
+            <label>Padding on posts: {appState.paddingOnPosts}px</label>
 
+          </Col>
+          <Col span={12}>
+            <Slider
+              min={0}
+              defaultValue={5}
+              max={20}
+              step={1}
+              onChange={setPaddingOnPosts}
+              value={typeof appState.paddingOnPosts === 'number' ? appState.paddingOnPosts : 5}
+            />
+          </Col>
+        </Row>
 
-        <Label htmlFor='padding-on-posts'>Padding on posts</Label>
-        <Input
-          id='padding-on-posts'
-          name='padding-on-posts'
-          type='number'
-          value={appState.paddingOnPosts}
-          placeholder='0'
-          onChange={setPaddingOnPosts}
-        />
+        <Row>
+          <Col span={12}>
+            <label>Margin on posts: {appState.marginOnPosts}px</label>
 
-        <Label htmlFor='margin-on-posts'>Margin on posts</Label>
-        <Input
-          id='margin-on-posts'
-          name='margin-on-posts'
-          type='number'
-          value={appState.marginOnPosts}
-          placeholder='0'
-          onChange={setMarginOnPosts}
-        />
+          </Col>
+          <Col span={12}>
+            <Slider
+              min={0}
+              defaultValue={0}
+              max={20}
+              step={1}
+              onChange={setMarginOnPosts}
+              value={typeof appState.marginOnPosts === 'number' ? appState.marginOnPosts : 0}
+            />
+          </Col>
+        </Row>
 
-        <Label htmlFor='hide-feed-source'>Hide Feed source?</Label>
-        <Switch id='hide-feed-source' name='hide-feed-source' checked={appState.hideFeedSource} onClick={() => toggleHideFeedSource()} />
+        <Row>
+          <Col span={12}>
+            <label>Hide Polls</label>
+          </Col>
+          <Col span={12}>
+            <Switch
+              id='hide-polls'
+              checkedChildren={<CheckOutlined />}
+              unCheckedChildren={<CloseOutlined />}
+              onClick={() => toggleHidePolls()}
+              checked={appState.hidePolls}
+              defaultChecked={appState.hidePolls}
+            />
+          </Col>
+        </Row>
 
-        <Label htmlFor='hide-sidebar'>Hide Sidebars?</Label>
-        <Switch id='hide-sidebar' name='hide-sidebar' checked={appState.hideSidebar} onClick={() => toggleHideSidebar()} />
+        <Row>
+          <Col span={12}>
+            <label>Hide Feed source</label>
+          </Col>
+          <Col span={12}>
+            <Switch id='hide-feed-source'
+              checked={appState.hideFeedSource}
+              onClick={() => toggleHideFeedSource()} />
+          </Col>
+        </Row>
 
-        <Label htmlFor='hide-message-bubble'>Hide Message bubble?</Label>
-        <Switch id='hide-message-bubble' name='hide-message-bubble' checked={appState.hideMessageBubble} onClick={() => toggleHideMessageBubble()} />
+        <Row>
+          <Col span={12}>
+            <label>Hide sidebar</label>
+          </Col>
+          <Col span={12}>
+            <Switch id='hide-sidebar'
+              checked={appState.hideSidebar}
+              onClick={() => toggleHideSidebar()} />
+          </Col>
+        </Row>
 
-        <Label htmlFor='hide-message-bubble'>Hide Polls?</Label>
-        <Switch id='hide-message-bubble' name='hide-message-bubble' checked={appState.hidePolls} onClick={() => toggleHidePolls()} />
+        <Row>
+          <Col span={12}>
+            <label>Hide Message bubble</label>
+          </Col>
+          <Col span={12}>
+            <Switch id='hide-message-bubble'
+              checked={appState.hideMessageBubble}
+              onClick={() => toggleHideMessageBubble()} />
+          </Col>
+        </Row>
 
-        <Label htmlFor='hide-reactions'>Hide reactions?</Label>
-        <Switch id='hide-reactions' name='hide-reactions' checked={appState.hideReactions} onClick={() => toggleHideReactions()} />
+        <Row>
+          <Col span={12}>
+            <label>Hide Reactions</label>
+          </Col>
+          <Col span={12}>
+            <Switch id='hide-reactions'
+              checked={appState.hideReactions}
+              onClick={() => toggleHideReactions()} />
+          </Col>
+        </Row>
 
-        <Label htmlFor='hide-comments'>Hide Comments?</Label>
-        <Switch id='hide-comments' name='hide-comments' checked={appState.hideComments} onClick={() => toggleHideComments()} />
+        <Row>
+          <Col span={12}>
+            <label>Hide Comments</label>
+          </Col>
+          <Col span={12}>
+            <Switch id='hide-comments'
+              checked={appState.hideComments}
+              onClick={() => toggleHideComments()} />
+          </Col>
+        </Row>
       </Card>
-    </div>
+    </>
   );
 };
 

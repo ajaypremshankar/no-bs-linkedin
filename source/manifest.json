@@ -9,12 +9,11 @@
     "48": "assets/icons/favicon-48.png",
     "128": "assets/icons/favicon-128.png"
   },
-  "description": "Sample description",
+  "description": "Browse cleaner LinkedIn",
   "homepage_url": "https://github.com/abhijithvijayan/no-bs-linkedin",
-  "short_name": "Sample Name",
+  "short_name": "NO-BS-LI",
 
   "permissions": [
-    "activeTab",
     "storage",
     "http://www.linkedin.com/*",
     "https://www.linkedin.com/*"

@@ -116,11 +116,8 @@ const togglePolls = (element: any, config: AppConfig) => {
 
 const handleScaling = () => {
   StorageService.getConfig("no-bs-li-config", function (config: any) {
-    let main = document.getElementsByClassName(
-      "scaffold-layout__main"
-    )[0] as any;
-    const scale = config.scale / 100;
-    main.style.transform = `scale(${scale})`;
+    let main = document.getElementsByClassName("scaffold-layout")[0] as any;
+    main.style.transform = `scale(${config.scale})`;
   });
 };
 
