@@ -17,6 +17,8 @@ const destPath = path.join(__dirname, 'extension');
 const nodeEnv = process.env.NODE_ENV || 'development';
 const targetBrowser = process.env.TARGET_BROWSER;
 
+const PACKAGE = require('./package.json');
+
 const extensionReloaderPlugin =
   nodeEnv === 'development'
     ? new ExtensionReloader({
@@ -199,7 +201,7 @@ module.exports = {
               {
                 format: 'zip',
                 source: path.join(destPath, targetBrowser),
-                destination: `${path.join(destPath, targetBrowser)}.${getExtensionFileType(targetBrowser)}`,
+                destination: `${path.join(destPath, targetBrowser + "-" + PACKAGE.version)}.${getExtensionFileType(targetBrowser)}`,
                 options: { zlib: { level: 6 } },
               },
             ],
