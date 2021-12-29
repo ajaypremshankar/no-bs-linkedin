@@ -1,6 +1,6 @@
 import "emoji-log";
 import { browser } from "webextension-polyfill-ts";
-import { AppConfig } from "../types/AppConfig";
+import AppConfig from "../../types/app-config";
 
 browser.runtime.onInstalled.addListener((): void => {
   chrome.storage.local.set(

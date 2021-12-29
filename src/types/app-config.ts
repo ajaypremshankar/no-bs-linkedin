@@ -1,4 +1,4 @@
-export interface AppConfig {
+export default interface AppConfig {
   hideReactions: boolean;
   hideSidebar: boolean;
   hideMessageBubble: boolean;

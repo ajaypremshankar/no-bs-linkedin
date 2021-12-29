@@ -132,7 +132,7 @@ If you don't want to use `package.json` version, you can disable the option [her
 
 ### Generating browser specific manifest.json
 
-Update `source/manifest.json` file with browser vendor prefixed manifest keys
+Update `src/manifest.json` file with browser vendor prefixed manifest keys
 
 ```js
 {
