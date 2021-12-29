@@ -2,8 +2,11 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-<p align="center">Extension that declutters your linkedin and lets you focus on what matters.</p>
 
+
+<h5>
+<p align="center">Extension that declutters your linkedin and lets you focus on what matters.</p>
+</h5>
 <h3 align="center">🙋‍♂️ Started by <a href="https://www.linkedin.com/in/ajaypremshankar/">Ajay Prem Shankar</a></h3>
 <hr />
 
