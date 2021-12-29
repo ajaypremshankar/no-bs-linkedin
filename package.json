@@ -3,11 +3,11 @@
   "version": "2.0.1",
   "description": "Web extension starter using react and typescript",
   "private": true,
-  "repository": "https://github.com/abhijithvijayan/no-bs-linkedin.git",
+  "repository": "https://github.com/ajaypremshankar/no-bs-linkedin.git",
   "author": {
-    "name": "abhijithvijayan",
-    "email": "email@abhijithvijayan.in",
-    "url": "https://abhijithvijayan.in"
+    "name": "ajaypremshankar",
+    "email": "ajaypremshankar@gmail.com",
+    "url": "https://ajaypremshankar.in"
   },
   "license": "MIT",
   "engines": {
