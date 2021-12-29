@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "ajaypremshankar",
+      "name": "Ajay Prem Shankar",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8684703?v=4",
+      "profile": "http://ajaypremshankar.in/",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "no-bs-linkedin",
+  "projectOwner": "ajaypremshankar",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

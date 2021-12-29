@@ -1,4 +1,7 @@
 <h1 align="center">🚀 no-bs-linkedin</h1>
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 <p align="center">Extension that declutters your linkedin and lets you focus on what matters.</p>
 
 <h3 align="center">🙋‍♂️ Started by <a href="https://www.linkedin.com/in/ajaypremshankar/">Ajay Prem Shankar</a></h3>
@@ -113,3 +116,23 @@ Please file an issue [here](https://github.com/ajaypremshankar/no-bs-linkedin/is
 ## License
 
 MIT © [Ajay Prem Shankar](https://ajaypremshankar.in)
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://ajaypremshankar.in/"><img src="https://avatars.githubusercontent.com/u/8684703?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ajay Prem Shankar</b></sub></a><br /><a href="https://github.com/ajaypremshankar/no-bs-linkedin/commits?author=ajaypremshankar" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
