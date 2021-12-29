@@ -10,7 +10,7 @@
     "128": "assets/icons/favicon-128.png"
   },
   "description": "Browse cleaner LinkedIn",
-  "homepage_url": "https://github.com/abhijithvijayan/no-bs-linkedin",
+  "homepage_url": "https://github.com/ajaypremshankar/no-bs-linkedin",
   "short_name": "NO-BS-LI",
 
   "permissions": [
@@ -63,7 +63,7 @@
   "content_scripts": [
     {
       "matches": ["http://www.linkedin.com/*", "https://www.linkedin.com/*"],
-      "js": ["js/contentScript.bundle.js"]
+      "js": ["js/content.bundle.js"]
     }
   ]
 }

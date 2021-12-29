@@ -1,5 +1,5 @@
 import { StorageService } from "../service/storage-service";
-import { AppConfig } from "../types/AppConfig";
+import AppConfig from "../types/app-config";
 
 chrome.runtime.onMessage.addListener((message) => {
   if (message.action === "configChanged") {

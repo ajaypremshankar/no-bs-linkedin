@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Row, Col, Card, Slider, PageHeader, Divider } from 'antd';
-import { AppConfig } from '../types/AppConfig';
-import { StorageService } from '../service/storage-service';
+import { StorageService } from '../../service/storage-service';
 
 import 'antd/dist/antd.css'; // or 'antd/dist/antd.less'
 import './styles.scss';
-import SwitchRow from '../components/switch-row-component';
+import SwitchRow from '../../components/switch-row-component';
+import AppConfig from '../../types/app-config';
 
 const Popup: React.FC = () => {
 
