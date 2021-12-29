@@ -117,7 +117,8 @@ See the original [README](https://github.com/ajaypremshankar/wext-manifest-loade
 
 Please file an issue [here](https://github.com/ajaypremshankar/no-bs-linkedin/issues/new) for bugs, missing documentation, or unexpected behavior.
 
-## Special thanks to [@abhijithvijayan](https://twitter.com/_abhijithv) for open-sourcing extension builder template.
+## Special thanks to
+[@abhijithvijayan](https://twitter.com/_abhijithv) for open-sourcing extension builder template.
 
 ## License
 
